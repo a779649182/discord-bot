@@ -1,0 +1,114 @@
+{
+  'regions': [
+    {
+      'id': 1,
+      'name': 'North America',
+      'slug': 'NA',
+      'subregions': [
+        {
+          'id': 1,
+          'name': 'Aether'
+        },
+        {
+          'id': 4,
+          'name': 'Primal'
+        },
+        {
+          'id': 11,
+          'name': 'Crystal'
+        },
+        {
+          'id': 16,
+          'name': 'Dynamis'
+        }
+      ]
+    },
+    {
+      'id': 2,
+      'name': 'Europe',
+      'slug': 'EU',
+      'subregions': [
+        {
+          'id': 2,
+          'name': 'Chaos'
+        },
+        {
+          'id': 10,
+          'name': 'Light'
+        },
+        {
+          'id': 17,
+          'name': 'Shadow'
+        }
+      ]
+    },
+    {
+      'id': 3,
+      'name': 'Japan',
+      'slug': 'JP',
+      'subregions': [
+        {
+          'id': 3,
+          'name': 'Elemental'
+        },
+        {
+          'id': 5,
+          'name': 'Gaia'
+        },
+        {
+          'id': 6,
+          'name': 'Mana'
+        },
+        {
+          'id': 15,
+          'name': 'Meteor'
+        }
+      ]
+    },
+    {
+      'id': 6,
+      'name': 'Oceanic',
+      'slug': 'OC',
+      'subregions': [
+        {
+          'id': 14,
+          'name': 'Materia'
+        }
+      ]
+    },
+    {
+      'id': 4,
+      'name': 'China',
+      'slug': 'CN',
+      'subregions': [
+        {
+          'id': 7,
+          'name': '½����'
+        },
+        {
+          'id': 8,
+          'name': 'Ī����'
+        },
+        {
+          'id': 12,
+          'name': 'èС��'
+        },
+        {
+          'id': 13,
+          'name': '������'
+        }
+      ]
+    },
+    {
+      'id': 5,
+      'name': 'Korea',
+      'slug': 'KR',
+      'subregions': [
+        {
+          'id': 9,
+          'name': 'Korean Data Center'
+        }
+      ]
+    }
+  ]
+}

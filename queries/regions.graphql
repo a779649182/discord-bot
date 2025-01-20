@@ -1,0 +1,13 @@
+query {
+  worldData{
+		regions{
+			id
+			name
+			slug
+			subregions{
+				id
+				name
+			}
+		}
+	}
+}

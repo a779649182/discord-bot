@@ -1,0 +1,12 @@
+query {
+  worldData{
+		zones{
+			id
+			name
+            encounters{
+				id
+				name
+			}
+		}
+	}
+}

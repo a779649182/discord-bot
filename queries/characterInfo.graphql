@@ -1,0 +1,15 @@
+query GetCharacter($name: String!, $serverSlug:String!, $serverRegion:String!){
+	characterData{
+		character(name:$name,serverSlug:$serverSlug,serverRegion:$serverRegion){
+			id
+			name
+			server{
+				slug
+				region{
+					name
+				}
+			}
+			gameData(forceUpdate: true)
+		}
+	}
+}

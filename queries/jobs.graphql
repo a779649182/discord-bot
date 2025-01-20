@@ -1,0 +1,14 @@
+query {
+  gameData{
+		classes{
+			id
+			name
+			slug
+			specs{
+				id
+				name
+				slug
+			}
+		}
+	}
+}

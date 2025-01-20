@@ -31,11 +31,13 @@ async def ping(interaction: discord.Interaction):
 
 @bot.tree.command(name='character', description='Search for a character on FFLogs')
 async def character(interaction: discord.Interaction, name: str, server: str):
+    #await interaction.response.send_message("Fetching character data, please wait...")
     embed = discord.Embed(
         title=f"Character Search: {name}",
         description=f"Server: {server}",
         color=discord.Color.green()
     )
+    #embed.set_thumbnail(url="https://preview.redd.it/daily-character-discussion-kita-ikuyo-v0-alckatsavcia1.png?width=736&format=png&auto=webp&s=3965d7e5b686028b7e5659fc5aa3195fcfbb3628")
 
     # Create buttons
     button1 = Button(label="Select Content Type", style=discord.ButtonStyle.primary, custom_id="content_type")
@@ -47,7 +49,8 @@ async def character(interaction: discord.Interaction, name: str, server: str):
     view.add_item(button2)
 
     # Send the embed with the buttons
-    await interaction.response.send_message(embed=embed, view=view)
+    await  interaction.response.send_message(embed=embed, view=view)
+    #await interaction.edit_original_response(content=None,embed=embed, view=view)
 
 @bot.event
 async def on_interaction(interaction: discord.Interaction):
