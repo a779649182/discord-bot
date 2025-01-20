@@ -1,114 +1,114 @@
 {
-  'regions': [
-    {
-      'id': 1,
-      'name': 'North America',
-      'slug': 'NA',
-      'subregions': [
+    "regions": [
         {
-          'id': 1,
-          'name': 'Aether'
+            "id": 1,
+            "name": "North America",
+            "slug": "NA",
+            "subregions": [
+                {
+                    "id": 1,
+                    "name": "Aether"
+                },
+                {
+                    "id": 4,
+                    "name": "Primal"
+                },
+                {
+                    "id": 11,
+                    "name": "Crystal"
+                },
+                {
+                    "id": 16,
+                    "name": "Dynamis"
+                }
+            ]
         },
         {
-          'id': 4,
-          'name': 'Primal'
+            "id": 2,
+            "name": "Europe",
+            "slug": "EU",
+            "subregions": [
+                {
+                    "id": 2,
+                    "name": "Chaos"
+                },
+                {
+                    "id": 10,
+                    "name": "Light"
+                },
+                {
+                    "id": 17,
+                    "name": "Shadow"
+                }
+            ]
         },
         {
-          'id': 11,
-          'name': 'Crystal'
+            "id": 3,
+            "name": "Japan",
+            "slug": "JP",
+            "subregions": [
+                {
+                    "id": 3,
+                    "name": "Elemental"
+                },
+                {
+                    "id": 5,
+                    "name": "Gaia"
+                },
+                {
+                    "id": 6,
+                    "name": "Mana"
+                },
+                {
+                    "id": 15,
+                    "name": "Meteor"
+                }
+            ]
         },
         {
-          'id': 16,
-          'name': 'Dynamis'
+            "id": 6,
+            "name": "Oceanic",
+            "slug": "OC",
+            "subregions": [
+                {
+                    "id": 14,
+                    "name": "Materia"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "China",
+            "slug": "CN",
+            "subregions": [
+                {
+                    "id": 7,
+                    "name": "\u9646\u884c\u9e1f"
+                },
+                {
+                    "id": 8,
+                    "name": "\u83ab\u53e4\u529b"
+                },
+                {
+                    "id": 12,
+                    "name": "\u732b\u5c0f\u80d6"
+                },
+                {
+                    "id": 13,
+                    "name": "\u8c46\u8c46\u67f4"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Korea",
+            "slug": "KR",
+            "subregions": [
+                {
+                    "id": 9,
+                    "name": "Korean Data Center"
+                }
+            ]
         }
-      ]
-    },
-    {
-      'id': 2,
-      'name': 'Europe',
-      'slug': 'EU',
-      'subregions': [
-        {
-          'id': 2,
-          'name': 'Chaos'
-        },
-        {
-          'id': 10,
-          'name': 'Light'
-        },
-        {
-          'id': 17,
-          'name': 'Shadow'
-        }
-      ]
-    },
-    {
-      'id': 3,
-      'name': 'Japan',
-      'slug': 'JP',
-      'subregions': [
-        {
-          'id': 3,
-          'name': 'Elemental'
-        },
-        {
-          'id': 5,
-          'name': 'Gaia'
-        },
-        {
-          'id': 6,
-          'name': 'Mana'
-        },
-        {
-          'id': 15,
-          'name': 'Meteor'
-        }
-      ]
-    },
-    {
-      'id': 6,
-      'name': 'Oceanic',
-      'slug': 'OC',
-      'subregions': [
-        {
-          'id': 14,
-          'name': 'Materia'
-        }
-      ]
-    },
-    {
-      'id': 4,
-      'name': 'China',
-      'slug': 'CN',
-      'subregions': [
-        {
-          'id': 7,
-          'name': '½����'
-        },
-        {
-          'id': 8,
-          'name': 'Ī����'
-        },
-        {
-          'id': 12,
-          'name': 'èС��'
-        },
-        {
-          'id': 13,
-          'name': '������'
-        }
-      ]
-    },
-    {
-      'id': 5,
-      'name': 'Korea',
-      'slug': 'KR',
-      'subregions': [
-        {
-          'id': 9,
-          'name': 'Korean Data Center'
-        }
-      ]
-    }
-  ]
+    ]
 }

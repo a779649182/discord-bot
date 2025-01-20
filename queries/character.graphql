@@ -9,7 +9,7 @@ query GetCharacter($name: String!, $serverSlug:String!, $serverRegion:String!){
 					name
 				}
 			}
-			gameData(forceUpdate: true)
+			zoneRankings
 		}
 	}
 }

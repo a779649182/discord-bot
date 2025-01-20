@@ -1,3 +1,4 @@
+import json
 import os
 import requests
 from dotenv import load_dotenv
@@ -13,40 +14,50 @@ headers = {
 }
 
 def get_zones():
-    with open("queries/zones.graphql", "r") as file:
+    with open("../queries/zones.graphql", "r") as file:
         query = file.read()
     response = requests.post(URL, headers=headers, json={'query': query})
     if response.status_code == 200:
         data = response.json()
         zones = data['data']['worldData']
-        with open("resources/zones.json", "w") as file:
-            file.write(str(zones))
+        with open("../resources/zones.json", "w") as file:
+            json.dump(zones, file, indent=4)
     else:
         print(f"Failed to get zones: {response.status_code}")
 
 def get_jobs():
-    with open("queries/jobs.graphql", "r") as file:
+    with open("../queries/jobs.graphql", "r") as file:
         query = file.read()
     response = requests.post(URL, headers=headers, json={'query': query})
     if response.status_code == 200:
         data = response.json()
         jobs = data['data']['gameData']['classes'][0]['specs']
         # Note: The jobs are a list of dictionaries.
-        with open("resources/jobs.json", "w") as file:
-            file.write(str(jobs))
+        with open("../resources/jobs.json", "w") as file:
+            json.dump(jobs, file, indent=4)
     else:
         print(f"Failed to get jobs: {response.status_code}")
 
 def get_regions():
     # regions slug = serverRegion
     # subregion name = serverSlug
-    with open("queries/regions.graphql", "r") as file:
+    with open("../queries/regions.graphql", "r") as file:
         query = file.read()
     response = requests.post(URL, headers=headers, json={'query': query})
     if response.status_code == 200:
         data = response.json()
         regions = data['data']['worldData']
-        with open("resources/regions.json", "w") as file:
-            file.write(str(regions))
+        with open("../resources/regions.json", "w") as file:
+            json.dump(regions, file, indent=4)
     else:
         print(f"Failed to get regions: {response.status_code}")
+
+
+def main():
+    get_zones()
+    get_jobs()
+    get_regions()
+
+
+if __name__ == "__main__":
+    main()
