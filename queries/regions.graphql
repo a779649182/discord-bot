@@ -4,9 +4,11 @@ query {
 			id
 			name
 			slug
-			subregions{
-				id
-				name
+			servers{
+				data{
+					id
+					name
+				}
 			}
 		}
 	}

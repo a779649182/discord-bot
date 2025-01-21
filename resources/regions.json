@@ -1,114 +1,111 @@
-{
-    "regions": [
-        {
-            "id": 1,
-            "name": "North America",
-            "slug": "NA",
-            "subregions": [
-                {
-                    "id": 1,
-                    "name": "Aether"
-                },
-                {
-                    "id": 4,
-                    "name": "Primal"
-                },
-                {
-                    "id": 11,
-                    "name": "Crystal"
-                },
-                {
-                    "id": 16,
-                    "name": "Dynamis"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Europe",
-            "slug": "EU",
-            "subregions": [
-                {
-                    "id": 2,
-                    "name": "Chaos"
-                },
-                {
-                    "id": 10,
-                    "name": "Light"
-                },
-                {
-                    "id": 17,
-                    "name": "Shadow"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "name": "Japan",
-            "slug": "JP",
-            "subregions": [
-                {
-                    "id": 3,
-                    "name": "Elemental"
-                },
-                {
-                    "id": 5,
-                    "name": "Gaia"
-                },
-                {
-                    "id": 6,
-                    "name": "Mana"
-                },
-                {
-                    "id": 15,
-                    "name": "Meteor"
-                }
-            ]
-        },
-        {
-            "id": 6,
-            "name": "Oceanic",
-            "slug": "OC",
-            "subregions": [
-                {
-                    "id": 14,
-                    "name": "Materia"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "name": "China",
-            "slug": "CN",
-            "subregions": [
-                {
-                    "id": 7,
-                    "name": "\u9646\u884c\u9e1f"
-                },
-                {
-                    "id": 8,
-                    "name": "\u83ab\u53e4\u529b"
-                },
-                {
-                    "id": 12,
-                    "name": "\u732b\u5c0f\u80d6"
-                },
-                {
-                    "id": 13,
-                    "name": "\u8c46\u8c46\u67f4"
-                }
-            ]
-        },
-        {
-            "id": 5,
-            "name": "Korea",
-            "slug": "KR",
-            "subregions": [
-                {
-                    "id": 9,
-                    "name": "Korean Data Center"
-                }
-            ]
-        }
-    ]
-}
+[
+    {
+        "serverRegion": "NA",
+        "severSlugs": [
+            "Adamantoise",
+            "Balmung",
+            "Behemoth",
+            "Brynhildr",
+            "Cactuar",
+            "Coeurl",
+            "Diabolos",
+            "Excalibur",
+            "Exodus",
+            "Faerie",
+            "Famfrit",
+            "Gilgamesh",
+            "Goblin",
+            "Hyperion",
+            "Jenova",
+            "Lamia",
+            "Leviathan",
+            "Malboro",
+            "Mateus",
+            "Midgardsormr",
+            "Sargatanas",
+            "Siren",
+            "Ultros",
+            "Zalera",
+            "Halicarnassus",
+            "Maduin",
+            "Marilith",
+            "Seraph",
+            "Cuchulainn",
+            "Golem",
+            "Kraken",
+            "Rafflesia",
+            "Innocence",
+            "Pixie",
+            "Titania",
+            "Tycoon"
+        ]
+    },
+    {
+        "serverRegion": "EU",
+        "severSlugs": [
+            "Cerberus",
+            "Lich",
+            "Moogle",
+            "Odin",
+            "Phoenix",
+            "Ragnarok",
+            "Shiva",
+            "Zodiark",
+            "Omega",
+            "Louisoix",
+            "Spriggan",
+            "Twintania",
+            "Sagittarius",
+            "Phantom",
+            "Alpha",
+            "Raiden"
+        ]
+    },
+    {
+        "serverRegion": "JP",
+        "severSlugs": [
+            "Aegis",
+            "Atomos",
+            "Carbuncle",
+            "Garuda",
+            "Gungnir",
+            "Kujata",
+            "Ramuh",
+            "Tonberry",
+            "Typhon",
+            "Unicorn",
+            "Anima",
+            "Asura",
+            "Belias",
+            "Chocobo",
+            "Hades",
+            "Ixion",
+            "Mandragora",
+            "Masamune",
+            "Pandaemonium",
+            "Shinryu",
+            "Titan",
+            "Alexander",
+            "Bahamut",
+            "Durandal",
+            "Fenrir",
+            "Ifrit",
+            "Ridill",
+            "Tiamat",
+            "Ultima",
+            "Valefor",
+            "Yojimbo",
+            "Zeromus"
+        ]
+    },
+    {
+        "serverRegion": "OC",
+        "severSlugs": [
+            "Bismarck",
+            "Ravana",
+            "Sephirot",
+            "Sophia",
+            "Zurvan"
+        ]
+    }
+]

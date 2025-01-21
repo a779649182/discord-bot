@@ -19,7 +19,7 @@ def get_zones():
     response = requests.post(URL, headers=headers, json={'query': query})
     if response.status_code == 200:
         data = response.json()
-        zones = data['data']['worldData']
+        zones = data['data']['worldData']['zones']
         with open("../resources/zones.json", "w") as file:
             json.dump(zones, file, indent=4)
     else:
@@ -39,16 +39,24 @@ def get_jobs():
         print(f"Failed to get jobs: {response.status_code}")
 
 def get_regions():
-    # regions slug = serverRegion
-    # subregion name = serverSlug
     with open("../queries/regions.graphql", "r") as file:
         query = file.read()
     response = requests.post(URL, headers=headers, json={'query': query})
     if response.status_code == 200:
         data = response.json()
-        regions = data['data']['worldData']
+        regions = data['data']['worldData']['regions']
+        new_regions = []
+        for region in regions:
+            if region['slug'] in ['CN','KR']:
+                continue
+            tmp = {}
+            tmp['serverRegion'] = region['slug']
+            tmp['severSlugs'] = []
+            for server in region['servers']['data']:
+                tmp['severSlugs'].append(server['name'])
+            new_regions.append(tmp)
         with open("../resources/regions.json", "w") as file:
-            json.dump(regions, file, indent=4)
+            json.dump(new_regions, file, indent=4)
     else:
         print(f"Failed to get regions: {response.status_code}")
 
