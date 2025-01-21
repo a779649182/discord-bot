@@ -2,13 +2,8 @@ query GetCharacter($name: String!, $serverSlug:String!, $serverRegion:String!){
 	characterData{
 		character(name:$name,serverSlug:$serverSlug,serverRegion:$serverRegion){
 			id
+			lodestoneID
 			name
-			server{
-				slug
-				region{
-					name
-				}
-			}
 			zoneRankings
 		}
 	}
