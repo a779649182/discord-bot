@@ -46,6 +46,7 @@ def get_regions():
         data = response.json()
         regions = data['data']['worldData']['regions']
         new_regions = []
+        slugs_only = []
         for region in regions:
             if region['slug'] in ['CN','KR']:
                 continue
@@ -54,9 +55,12 @@ def get_regions():
             tmp['severSlugs'] = []
             for server in region['servers']['data']:
                 tmp['severSlugs'].append(server['name'])
+                slugs_only.append(server['name'])
             new_regions.append(tmp)
         with open("../resources/regions.json", "w") as file:
             json.dump(new_regions, file, indent=4)
+        with open("../resources/serverSlugs.json", "w") as file:
+            json.dump(slugs_only, file, indent=4)
     else:
         print(f"Failed to get regions: {response.status_code}")
 

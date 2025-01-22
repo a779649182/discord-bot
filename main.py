@@ -1,11 +1,13 @@
+import json
 import os
-from email.policy import default
+from pprint import pprint
 
 import discord
 from dotenv import load_dotenv
 from discord import app_commands
 from discord.ext import commands
 from discord.ui import Button, View
+from fflogs.characterInfo import get_character
 
 load_dotenv()
 
@@ -16,6 +18,9 @@ intents.message_content = True
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
+with open("resources/serverSlugs.json", "r") as file:
+    serverList = json.load(file)
+
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
@@ -25,40 +30,49 @@ async def on_ready():
     except Exception as e:
         print(f"Failed to sync commands: {e}")
 
-@bot.tree.command(name='ping')
-async def ping(interaction: discord.Interaction):
-    await interaction.response.send_message("Pong!")
+async def server_autocomplete(interaction: discord.Interaction, current: str):
+    return [app_commands.Choice(name=server, value=server)
+            for server in serverList if current.lower() in server.lower()][:25]
+
 
 @bot.tree.command(name='character', description='Search for a character on FFLogs')
+@app_commands.autocomplete(server=server_autocomplete)
 async def character(interaction: discord.Interaction, name: str, server: str):
+    #await interaction.response.defer(thinking=True)
     #await interaction.response.send_message("Fetching character data, please wait...")
+    characterInfo = get_character(name, server)
+    if not characterInfo:
+        await interaction.followup.send(f"Character `{name}` on `{server}` not found.", ephemeral=True)
+        return
+
+    pprint(characterInfo)
     embed = discord.Embed(
-        title=f"Character Search: {name}",
+        title=characterInfo['name'],
         description=f"Server: {server}",
-        color=discord.Color.green()
+        color=discord.Color.green(),
+        url=f'https://www.fflogs.com/character/id/{characterInfo['id']}'
     )
-    #embed.set_thumbnail(url="https://preview.redd.it/daily-character-discussion-kita-ikuyo-v0-alckatsavcia1.png?width=736&format=png&auto=webp&s=3965d7e5b686028b7e5659fc5aa3195fcfbb3628")
 
-    # Create buttons
-    button1 = Button(label="Select Content Type", style=discord.ButtonStyle.primary, custom_id="content_type")
-    button2 = Button(label="Filter by Job", style=discord.ButtonStyle.secondary, custom_id="filter_job")
+    embed.set_thumbnail(url=characterInfo['thumbnail'])
 
-    # Add buttons to a view
-    view = View()
-    view.add_item(button1)
-    view.add_item(button2)
+    embed.add_field(name="Best Perf. Average", value=f"{characterInfo['overall']['bestPerformanceAverage']:.2f}",
+                    inline=True)
+    embed.add_field(name="Median Performance Average",
+                    value=f"{characterInfo['overall']['medianPerformanceAverage']:.2f}", inline=True)
 
-    # Send the embed with the buttons
-    await  interaction.response.send_message(embed=embed, view=view)
-    #await interaction.edit_original_response(content=None,embed=embed, view=view)
+    embed.add_field(
+        name=characterInfo['overall']['zoneName'],
+        value="```" +
+              f"{'Boss':<18}{'Spec':<8}{'Rank %':<8}{'Kills':<6}{'Rank':<6}\n" +
+              "\n".join(
+                  f"{parse['bossName']:<18}{parse['bestSpec']:<8}{parse['rankPercent']:<8.2f}{parse['totalKills']:<6}{parse['rank']:<6}"
+                  for parse in characterInfo['parses']) +
+              "```",
+        inline=False
+    )
 
-@bot.event
-async def on_interaction(interaction: discord.Interaction):
-    if interaction.type == discord.InteractionType.component:
-        custom_id = interaction.data.get("custom_id")
-        if custom_id == "content_type":
-            await interaction.response.send_message("Please select a content type: Raid, Ultimate, etc.")
-        elif custom_id == "filter_job":
-            await interaction.response.send_message("Please specify a job to filter by.")
+    await  interaction.response.send_message(embed=embed)
+
+
 
 bot.run(TOKEN)
