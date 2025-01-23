@@ -28,7 +28,7 @@ def process_server_info():
     return server_set,server_to_region
 
 def process_rankings(rankings:dict):
-    #pprint(rankings)
+    pprint(rankings)
     overall = {}
     parses = []
     overall['bestPerformanceAverage'] = rankings['bestPerformanceAverage']
@@ -46,8 +46,12 @@ def process_rankings(rankings:dict):
         parse_dict['id'] = parse['encounter']['id']
         parse_dict['rankPercent'] = parse['rankPercent']
         parse_dict['totalKills'] = parse['totalKills']
-        parse_dict['bestSpec'] = parse['bestSpec']
-        parse_dict['rank'] = parse['allStars']['rank']
+        if parse['spec'] is not None:
+            parse_dict['bestSpec'] = parse['bestSpec']
+            parse_dict['rank'] = parse['allStars']['rank']
+        else:
+            parse_dict['bestSpec'] = "N/A"
+            parse_dict['rank'] = "N/A"
         parses.append(parse_dict)
     return overall,parses
     #pprint(overall)

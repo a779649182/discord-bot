@@ -1,12 +1,12 @@
 import json
 import os
 from pprint import pprint
-
+import math
 import discord
 from dotenv import load_dotenv
 from discord import app_commands
 from discord.ext import commands
-from discord.ui import Button, View
+from tabulate import tabulate
 from fflogs.characterInfo import get_character
 
 load_dotenv()
@@ -63,9 +63,9 @@ async def character(interaction: discord.Interaction, name: str, server: str):
     embed.add_field(
         name=characterInfo['overall']['zoneName'],
         value="```" +
-              f"{'Boss':<18}{'Spec':<8}{'Rank %':<8}{'Kills':<6}{'Rank':<6}\n" +
+              f"{'Boss':<18}{'Job':<8}{'Rank %':<8}{'Kills':<6}{'Rank':<6}\n" +
               "\n".join(
-                  f"{parse['bossName']:<18}{parse['bestSpec']:<8}{parse['rankPercent']:<8.2f}{parse['totalKills']:<6}{parse['rank']:<6}"
+                  f"{parse['bossName']:<18}{parse['bestSpec']:<8}{get_heart_emoji(parse['rankPercent'])}{parse['totalKills']:>6}{parse['rank']:>6}"
                   for parse in characterInfo['parses']) +
               "```",
         inline=False
@@ -73,6 +73,31 @@ async def character(interaction: discord.Interaction, name: str, server: str):
 
     await  interaction.response.send_message(embed=embed)
 
+def get_heart_emoji(rank_percent:float):
+    if rank_percent == None:
+        return "N/A"
+    rank_percent = math.floor(rank_percent)
+    if rank_percent == 100:
+        return f"💛 100%"
+    elif rank_percent == 99:
+        return f"💗️{rank_percent:.0f}%"
+    elif rank_percent >= 95:
+        return f"🧡{rank_percent:.0f}%"
+    elif rank_percent >= 75:
+        return f"💜{rank_percent:.0f}%"
+    elif rank_percent >= 50:
+        return f"💙{rank_percent:.0f}%"
+    elif rank_percent >= 15:
+        return f"💚{rank_percent:.0f}%"
+    else:
+        return f"🖤{rank_percent:.0f}%"
+
+def tabulate_parses(parses):
+    list_parses = []
+    for parse in parses:
+        list_parses.append(parse.values())
+    print(tabulate(list_parses, headers=['Boss','Job','Rank %','Kills','Rank'], tablefmt="grid"))
+    return tabulate(list_parses, headers=['Boss','Job','Rank %','Kills','Rank'], tablefmt="grid")
 
 
 bot.run(TOKEN)
